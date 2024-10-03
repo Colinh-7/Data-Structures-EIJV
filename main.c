@@ -1,6 +1,9 @@
 #include "include/list.h"
+#include "include/dll.h"
 
 int main() {
+    printf("=========================\n LISTE\n=========================\n");
+
     list *my_list = LIST_init(); // Initialisation de ma liste
 
     for (int i=0; i<10; ++i) { // Remplissage de ma liste
@@ -17,4 +20,18 @@ int main() {
     printf("Valeur trouvée ? %s.\n", LIST_findElement(my_list, 6) ? "Oui" : "Non" ); // On cherche la valeur "6".
 
     LIST_free(my_list); // Je supprime proprement ma liste
+
+    printf("=========================\n LISTE DOUBLEMENT CHAINÉE\n=========================\n");
+
+    dll *my_dll = DLL_init();
+
+    for (int i=0; i<10; ++i) { 
+        DLL_addTail(my_dll, i);
+    }
+
+    DLL_print(my_dll);
+    printf("Taille de la liste : %d.\n", DLL_getLenght(my_dll));
+
+
+    DLL_free(my_dll);
 }
