@@ -156,6 +156,8 @@ cell* LIST_findElement(list *list, int value) {
 }
 
 void LIST_free(list *list) {
-    CELL_free(list->head);
-    free(list);
+    if (list) {
+        CELL_free(list->head);
+        free(list);
+    }
 }
