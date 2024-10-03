@@ -26,12 +26,11 @@ int main() {
     dll *my_dll = DLL_init();
 
     for (int i=0; i<10; ++i) { 
-        DLL_addTail(my_dll, i);
+        DLL_addHead(my_dll, i);
     }
 
     DLL_print(my_dll);
     printf("Taille de la liste : %d.\n", DLL_getLenght(my_dll));
-
 
     DLL_free(my_dll);
 }

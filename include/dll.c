@@ -52,7 +52,7 @@ void DLL_delete(dll *list, int value) {
         if (current) {
             if (current->prev) {
                 current->prev->next = current->next;
-                current->next->prev = current->prev;
+                if (current->next) current->next->prev = current->prev;
             }
             else {
                 list->head = current->next;
@@ -65,9 +65,15 @@ void DLL_delete(dll *list, int value) {
 
 void DLL_print(dll *list) {
     if (list) {
+        //dlc *x = NULL;
         for(dlc *c = list->head; c; c=c->next) {
             printf("%d, ", c->value);
+            //if (!c->next) x = c;
         }
+        /*putchar('\n');
+        for (;x; x=x->prev) {
+             printf("%d, ", x->value);
+        }*/
         putchar('\n');
     }
 }
@@ -100,15 +106,48 @@ void DLL_addTail(dll *list, int value) {
 }
 
 void DLL_addIndex(dll *list, int index, int value) {
+    if (list) {
+        if (index <= 0 || DLL_isEmpty(list)) DLL_addHead(list, value);
+        else {
+            dlc *new_cell = DLC_create(value);
+            dlc *current = list->head;
+            index--;
 
+            while (index > 0 && current->next) {
+                current = current->next;
+                index--;
+            }
+
+            if (new_cell) {
+                new_cell->next = current->next;
+                new_cell->prev = current;
+                if (new_cell->next) new_cell->next->prev = new_cell;
+                current->next = new_cell; 
+            }        
+        }
+    }
 }
 
 void DLL_deleteHead(dll *list) {
-
+    if (list) {
+        if (!DLL_isEmpty(list)) {
+            dlc *save = list->head;
+            list->head = save->next;
+            if (list->head) list->head->prev = NULL;
+            free(save);
+        }
+    }
 }
 
 dlc* DLL_findElement(dll *list, int value) {
-
+    dlc *found = NULL;
+    if (list) {
+        if (!DLL_isEmpty(list)) {
+            found = list->head;
+            while (found && found->value != value) found = found->next;
+        }
+    }
+    return found;
 }
 
 void DLL_free(dll *list) {
