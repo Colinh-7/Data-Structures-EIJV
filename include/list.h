@@ -46,6 +46,7 @@ void CELL_free(cell *cell);
 /**
  * @brief Initialise une liste.
  * @return Renvoie la liste créée, NULL sinon.
+ * @warning La liste doit être supprimée avec LIST_free(list*)
  */
 list* LIST_init();
 
@@ -105,7 +106,7 @@ void LIST_deleteHead(list *list);
  * @brief Trouve un élément dans une liste.
  * @param list : la liste
  * @param value : la valeur recherchée.
- * @return Renvoie la cellule recherchée.
+ * @return Renvoie la cellule recherchée ou NULL si elle n'est pas trouvée.
  */
 cell* LIST_findElement(list *list, int value);
 

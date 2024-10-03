@@ -46,6 +46,7 @@ void DLC_free(dlc *cell);
 /**
  * @brief Initialise une liste.
  * @return Renvoie la liste créée, NULL sinon.
+ * @warning La liste doit être supprimée avec DLL_free(dll*)
  */
 dll* DLL_init();
 
@@ -105,7 +106,7 @@ void DLL_deleteHead(dll *list);
  * @brief Trouve un élément dans une liste.
  * @param list : la liste
  * @param value : la valeur recherchée.
- * @return Renvoie la cellule recherchée.
+ * @return Renvoie la cellule recherchée ou NULL si elle n'est pas trouvée.
  */
 dlc* DLL_findElement(dll *list, int value);
 
