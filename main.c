@@ -1,5 +1,6 @@
 #include "include/list.h"
 #include "include/dll.h"
+#include "include/stack.h"
 
 int main() {
     printf("=========================\n LISTE\n=========================\n");
@@ -33,4 +34,20 @@ int main() {
     printf("Taille de la liste : %d.\n", DLL_getLenght(my_dll));
 
     DLL_free(my_dll);
+
+    printf("=========================\n PILE\n=========================\n");
+
+    stack *my_stack = STACK_init();
+
+    for (int i=0; i<10; ++i) STACK_stack(my_stack, i*10);
+
+    printf("Dépilement de la pile : \n");
+
+    while (my_stack->head) {
+        printf("Valeur dépilée : %d. ", STACK_unstack(my_stack));
+        printf("Taille de la pile : %d\n", STACK_lenght(my_stack));
+    }
+
+    STACK_print(my_stack);
+    STACK_free(my_stack);
 }

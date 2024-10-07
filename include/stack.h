@@ -4,7 +4,9 @@
 #include "cell.h"
 
 /*===============  STRUCTURES  ===============*/
-
+/**
+ * @brief Structure de la pile.
+ */
 typedef struct stack {
     cell *head;
 }stack;

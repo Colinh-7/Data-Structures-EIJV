@@ -33,7 +33,7 @@ int STACK_unstack(stack *stack) {
         free(save);
         return value;
     }
-    return -1;
+    return -1; // Si la pile est vide.
 }
 
 void STACK_print(stack *stack) {
