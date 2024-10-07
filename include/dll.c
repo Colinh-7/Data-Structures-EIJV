@@ -67,7 +67,7 @@ void DLL_print(dll *list) {
     if (list) {
         //dlc *x = NULL;
         for(dlc *c = list->head; c; c=c->next) {
-            printf("%d, ", c->value);
+            printf("%d -> ", c->value);
             //if (!c->next) x = c;
         }
         /*putchar('\n');

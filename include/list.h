@@ -1,45 +1,15 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "cell.h"
 
 /*===============  STRUCTURES  ===============*/
-
-/**
- * @brief Cellule d'une liste.
- */
-typedef struct cell {
-    int value;
-    struct cell *next;
-} cell;
-
 /**
  * @brief Liste qui contient des cellules.
  */
 typedef struct list {
     cell *head;
 }list;
-
-/*===============  CELLULE  ===============*/
-
-/**
- * @brief Créer une nouvelle cellule composée d'une valeur.
- * @param value : la valeur que l'on veut mettre dans la cellule
- * @return Renvoie la cellule créée, NULL sinon.
- */
-cell* CELL_create(int value);
-
-/**
- * @brief Compte le nombre de cellule chainée.
- * @param cell : la première cellule de la liste.
- */
-int CELL_count(cell *cell);
-
-/**
- * @brief Libére la mémoire de toutes les cellules chaînées.
- */
-void CELL_free(cell *cell);
 
 /*===============  LISTE  ===============*/
 
