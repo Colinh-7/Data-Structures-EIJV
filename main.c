@@ -1,6 +1,7 @@
 #include "include/list.h"
 #include "include/dll.h"
 #include "include/stack.h"
+#include "include/queue.h"
 
 int main() {
     printf("=========================\n LISTE\n=========================\n");
@@ -50,4 +51,17 @@ int main() {
 
     STACK_print(my_stack);
     STACK_free(my_stack);
+
+    printf("=========================\n FILE\n=========================\n");
+
+    queue *my_queue = QUEUE_init();
+
+    for (int i=0; i<10; ++i) QUEUE_enqueue(my_queue, i*3);
+
+    QUEUE_print(my_queue);
+
+    for (int i=0; i<5; ++i) printf("Défilement de la file : %d.\n", QUEUE_dequeue(my_queue));
+
+    QUEUE_print(my_queue);
+    QUEUE_free(my_queue);
 }

@@ -4,6 +4,7 @@
 #include "cell.h"
 
 /*===============  STRUCTURES  ===============*/
+
 /**
  * @brief Liste qui contient des cellules.
  */

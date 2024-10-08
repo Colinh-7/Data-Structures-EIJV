@@ -77,20 +77,14 @@ void LIST_addTail(list *list, int value) {
 
             while (current->next != NULL) current = current->next; // Je vais jusqu'à la dernière cellule de ma liste
 
-            cell *new_cell = CELL_create(value);
-
-            if (new_cell) {
-                current->next = new_cell;
-            }
+            current->next = CELL_create(value);
         }
     }
 }
 
 void LIST_addIndex(list *list, int index, int value) {
     if (list) {
-        if (LIST_isEmpty(list) || index <= 0) {
-            LIST_addHead(list, value);
-        }
+        if (LIST_isEmpty(list) || index <= 0) LIST_addHead(list, value);
         else {
             cell *new_cell = CELL_create(value);
 

@@ -5,8 +5,9 @@
 #include <stdlib.h>
 
 /*===============  STRUCTURES  ===============*/
+
 /**
- * @brief Cellule d'une cellule.
+ * @brief Structure d'une cellule.
  */
 typedef struct cell {
     int value;
