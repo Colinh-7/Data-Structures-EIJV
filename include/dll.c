@@ -37,7 +37,7 @@ void DLL_addHead(dll *list, int value) {
         dlc *new_cell = DLC_create(value);
         if (new_cell) {
             new_cell->next = list->head;
-            if (list->head) list->head->prev = new_cell;
+            if (list->head) list->head->prev = new_cell; // Je vérifie que list->head existe avant d'accèder à list->head->prev pour éviter une erreur de segmentation.
             list->head = new_cell;
         }
     }
@@ -71,7 +71,7 @@ void DLL_print(dll *list) {
             //if (!c->next) x = c;
         }
         /*putchar('\n');
-        for (;x; x=x->prev) {
+        for (;x; x=x->prev) { // Parcours à l'envers
              printf("%d, ", x->value);
         }*/
         putchar('\n');
@@ -106,25 +106,23 @@ void DLL_addTail(dll *list, int value) {
 }
 
 void DLL_addIndex(dll *list, int index, int value) {
-    if (list) {
-        if (index <= 0 || DLL_isEmpty(list)) DLL_addHead(list, value);
-        else {
-            dlc *new_cell = DLC_create(value);
-            dlc *current = list->head;
+    if (index <= 0 || DLL_isEmpty(list)) DLL_addHead(list, value);
+    else {
+        dlc *new_cell = DLC_create(value);
+        dlc *current = list->head;
+        index--;
+
+        while (index > 0 && current->next) {
+            current = current->next;
             index--;
-
-            while (index > 0 && current->next) {
-                current = current->next;
-                index--;
-            }
-
-            if (new_cell) {
-                new_cell->next = current->next;
-                new_cell->prev = current;
-                if (new_cell->next) new_cell->next->prev = new_cell;
-                current->next = new_cell; 
-            }        
         }
+
+        if (new_cell) {
+            new_cell->next = current->next;
+            new_cell->prev = current;
+            if (new_cell->next) new_cell->next->prev = new_cell;
+            current->next = new_cell; 
+        }        
     }
 }
 

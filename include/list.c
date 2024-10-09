@@ -70,54 +70,46 @@ int LIST_isEmpty(list *list) {
 }
 
 void LIST_addTail(list *list, int value) {
-    if (list) {
-        if (LIST_isEmpty(list)) LIST_addHead(list, value);
-        else {
-            cell *current = list->head;
+    if (LIST_isEmpty(list)) LIST_addHead(list, value);
+    else {
+        cell *current = list->head;
 
-            while (current->next != NULL) current = current->next; // Je vais jusqu'à la dernière cellule de ma liste
+        while (current->next != NULL) current = current->next; // Je vais jusqu'à la dernière cellule de ma liste
 
-            current->next = CELL_create(value);
-        }
+        current->next = CELL_create(value);
     }
 }
 
 void LIST_addIndex(list *list, int index, int value) {
-    if (list) {
-        if (LIST_isEmpty(list) || index <= 0) LIST_addHead(list, value);
-        else {
-            cell *new_cell = CELL_create(value);
+    if (LIST_isEmpty(list) || index <= 0) LIST_addHead(list, value);
+    else {
+        cell *new_cell = CELL_create(value);
 
-            cell *current = list->head;
-            index--; // On vient déjà de déplacé d'une cellule donc on enlève déjà 1.
+        cell *current = list->head;
+        index--; // On vient déjà de déplacé d'une cellule donc on enlève déjà 1.
 
-            while (current->next && index > 0) { // On parcourt "index" cellules.
-                current = current->next; 
-                index--;
-            }
-            new_cell->next = current->next;
-            current->next = new_cell;
+        while (current->next && index > 0) { // On parcourt "index" cellules.
+            current = current->next; 
+            index--;
         }
+        new_cell->next = current->next;
+        current->next = new_cell;
     }
 }
 
 void LIST_deleteHead(list *list) {
-    if (list) {
-        if (!LIST_isEmpty(list)) {
-            cell *save = list->head;
-            list->head = list->head->next;
-            free(save);
-        }
+    if (!LIST_isEmpty(list)) {
+        cell *save = list->head;
+        list->head = list->head->next;
+        free(save);
     }
 }
 
 cell* LIST_findElement(list *list, int value) {
     cell *found = NULL;
-    if (list) {
-        if (!LIST_isEmpty(list)) {
-            found = list->head;
-            while (found && found->value != value) found = found->next;
-        }
+    if (!LIST_isEmpty(list)) {
+        found = list->head;
+        while (found && found->value != value) found = found->next;
     }
     return found;
 }

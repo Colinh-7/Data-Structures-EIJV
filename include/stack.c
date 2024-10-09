@@ -45,7 +45,7 @@ void STACK_print(stack *stack) {
     }
 }
 
-int STACK_lenght(stack *stack) {
+int STACK_getLenght(stack *stack) {
     return CELL_count(stack->head);
 }
 

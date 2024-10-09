@@ -28,7 +28,7 @@ int main() {
     dll *my_dll = DLL_init();
 
     for (int i=0; i<10; ++i) { 
-        DLL_addHead(my_dll, i);
+        DLL_addHead(my_dll, i*5);
     }
 
     DLL_print(my_dll);
@@ -46,7 +46,7 @@ int main() {
 
     while (my_stack->head) {
         printf("Valeur dépilée : %d. ", STACK_unstack(my_stack));
-        printf("Taille de la pile : %d\n", STACK_lenght(my_stack));
+        printf("Taille de la pile : %d\n", STACK_getLenght(my_stack));
     }
 
     STACK_print(my_stack);

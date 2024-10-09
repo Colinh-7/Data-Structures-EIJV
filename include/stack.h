@@ -52,7 +52,7 @@ void STACK_print(stack *stack);
  * @param stack : la pile.
  * @return Renvoie la taille de la pile.
  */
-int STACK_lenght(stack *stack);
+int STACK_getLenght(stack *stack);
 
 /**
  * @brief Supprime et libère la mémoire de la pile.
